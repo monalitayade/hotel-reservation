@@ -1,0 +1,107 @@
+$p-font : 'FedraSansStd', sans-serif;
+
+
+// Font-Sizes
+
+$x-light	: 200;
+
+$light		: 300;
+
+$regular	: 400;
+
+$medium		: 500;
+
+$semi		: 500;
+
+$italic		: 600;
+
+$bold		: 700;
+
+/*$x-bold		: 800;
+
+$bolder		: 900;
+*/
+
+$sregular : 800;
+
+$sbold : 900;
+
+// $base-font : 16;
+
+$base-font-xxl : 16;
+
+$base-font-xl : 14;
+
+$base-font-l : 16;
+
+$base-font-m : 16;
+
+$base-font-s : 16;
+
+
+@function fontf($weight){
+
+	$fonf : '';
+
+	@if $weight == 300{  		
+  		$fonf : 'ceraLight', sans-serif;
+	}
+
+	@if $weight == 400{  		
+  		$fonf : 'ceraRegular', sans-serif;
+	}
+
+	@if $weight == 500{  		
+  		$fonf : 'ceraMedium', sans-serif;
+	}
+
+	@if $weight == 600{  		
+  		$fonf : 'ceraMediumItalic', sans-serif;
+	}
+
+	@if $weight == 700{  		
+  		$fonf : 'ceraBold', sans-serif;
+	}
+	@if $weight == 800{  		
+  		$fonf : 'ceraBoldItalic', sans-serif;
+	}
+
+	@return $fonf; 
+}
+
+/*@function fonts($weight){
+
+	$fons : '';
+
+
+	@if $weight == 400{  		
+  		$fonf : 'SegoeUI', sans-serif;
+	}
+
+	@if $weight == 500{  		
+  		$fonf : 'SegoeUI-Bold', sans-serif;
+	}
+	@return $fons; 
+}*/
+
+$scale-type: px;
+
+@function mesu($data){
+    @if $scale-type == 'px'{
+
+        @return unquote("#{$data}#{$scale-type}");
+    }
+    @else if $scale-type == 'em'{
+        @return ($data / 16) * 1em;
+    }
+    @else if $scale-type == 'rem'{
+        @return ($data / 16) * 1rem;
+    }
+}
+
+@mixin fonts($FS,$FW){
+	font:{
+		family: fontf($FW);
+		size: mesu($FS);
+	}
+}
